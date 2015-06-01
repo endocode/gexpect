@@ -294,6 +294,10 @@ func (expect *ExpectSubprocess) Capture() {
 	expect.outputBuffer = make([]byte, 0)
 }
 
+func (expect *ExpectSubprocess) CollectOutput() []byte {
+	return expect.outputBuffer
+}
+
 func (expect *ExpectSubprocess) SendLine(command string) error {
 	_, err := io.WriteString(expect.buf.f, command+"\r\n")
 	return err
